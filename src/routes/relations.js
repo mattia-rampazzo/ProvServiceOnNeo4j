@@ -1,13 +1,11 @@
 const express = require('express')
 const router = express.Router({ mergeParams: true }) //{ mergeParams: true } to access params in the route of app.js
 
-const neo4j = require('neo4j-driver')
 
-const uri = "bolt://localhost:7687"
-const user = "neo4j"
-const password = "password"
+// contains objects and function for prov elements and relations
+const provUtils = require('../provUtils.js')
+const driver = require('../neo4j-driver.js')
 
-const driver = neo4j.driver(uri, neo4j.auth.basic(user, password))
 
 /*
 se relazione ha un nome diverso da errore

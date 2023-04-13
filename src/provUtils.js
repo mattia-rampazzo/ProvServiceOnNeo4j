@@ -30,3 +30,4 @@ function parseBodyReqElement(req, type){
     return [elId, props]
 }
 
+module.exports = {mapProvRelTypes, parseBodyReqElement}

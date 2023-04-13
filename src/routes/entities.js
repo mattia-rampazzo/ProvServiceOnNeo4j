@@ -1,13 +1,9 @@
 const express = require('express')
 const router = express.Router({ mergeParams: true }) //{ mergeParams: true } to access params in the route of app.js
 
-const neo4j = require('neo4j-driver')
-
-const uri = "bolt://localhost:7687"
-const user = "neo4j"
-const password = "password"
-
-const driver = neo4j.driver(uri, neo4j.auth.basic(user, password))
+// contains objects and function for prov elements and relations
+const provUtils = require('../provUtils.js')
+const driver = require('../neo4j-driver.js')
 
 
 // old version
@@ -55,7 +51,7 @@ router.post("/", async function(req, res) {
     const docId = req.params.docId
     console.log(docId)
     // get the entity id and props
-    const [eId, props] = parseBodyReqElement(req, "entity")
+    const [eId, props] = provUtils.parseBodyReqElement(req, "entity")
     
     // open a session
     const session = driver.session()
